@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Los Guayos Digital - Taxi Oliveros | Delivery, Encomiendas y Moto Taxi 24/7 en Carabobo">
+    <meta name="theme-color" content="#FF6B00">
+    <title>Los Guayos Digital • Taxi Oliveros</title>
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --secondary: #00B140;
+            --wa-green: #25D366;
+            --dark: #1C1C1C;
+            --light: #F8F9FA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        /* HEADER - Mobile First */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 16px;
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            height: 48px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        
+        .brand-info h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .slogan {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .horario {
+            background: var(--secondary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(0, 177, 64, 0.3);
+        }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #FF8C00);
+            color: white;
+            padding: 40px 16px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero img.logo-hero {
+            height: 110px;
+            width: auto;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+        
+        .hero .slogan-hero {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+        
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-wa {
+            background: var(--wa-green);
+            color: white;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* SECCIONES GENERALES */
+        section {
+            padding: 40px 16px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        /* TARJETAS DE SERVICIOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+        
+        .service-card .icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), #FF8C00);
+            color: white;
+        }
+        
+        .service-card .content {
+            padding: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+        
+        .service-card p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* ALIADOS COMERCIALES */
+        .allies-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .ally-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .ally-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .ally-card img {
+            height: 90px;
+            width: 90px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .ally-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        
+        .ally-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        /* TRABAJA CON NOSOTROS */
+        .talent-section {
+            background: #F8F9FA;
+            border-radius: 24px;
+            padding: 32px 16px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+        
+        .benefit-card h4 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        .requirements {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .requirements ul {
+            list-style: none;
+        }
+        
+        .requirements li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .requirements li:last-child {
+            border-bottom: none;
+        }
+        
+        /* FORMULARIO */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .fab-wa {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 62px;
+            height: 62px;
+            background: var(--wa-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        /* MENÚ INFERIOR TIPO APP */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+            z-index: 1100;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0 4px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 4px 12px;
+        }
+        
+        .nav-item.active {
+            color: var(--primary);
+        }
+        
+        .nav-item span {
+            font-size: 1.6rem;
+            margin-bottom: 2px;
+        }
+        
+        /* RESPONSIVE - Desktop */
+        @media (min-width: 768px) {
+            .services-grid,
+            .allies-grid {
+                grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero {
+                padding: 60px 24px 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            section {
+                padding: 60px 24px;
+            }
+        }
+        
+        /* Animaciones suaves */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- Logo principal Taxi Oliveros -->
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/WhatsApp%20Image%202026-04-08%20at%2012.16.40%20PM.jpeg?raw=true" 
+                     alt="Taxi Oliveros - Los Guayos Digital" 
+                     class="logo">
+                <div class="brand-info">
+                    <h1>Taxi Oliveros</h1>
+                    <p class="slogan">Confiable • Seguro • Rápido • Económico</p>
+                </div>
+            </div>
+            
+            <div class="horario">
+                <span>🕒</span>
+                24/7
+            </div>
+            
+            <!-- Botón rápido agente en header (desktop) -->
+            <button onclick="contactAgent()" 
+                    style="background: #25D366; color: white; border: none; border-radius: 50px; padding: 10px 20px; font-weight: 700; display: none; align-items: center; gap: 8px;">
+                👋 Hola, agente
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/WhatsApp%20Image%202026-04-08%20at%2012.16.40%20PM.jpeg?raw=true" 
+                 alt="Taxi Oliveros" 
+                 class="logo-hero">
+            
+            <h1>¡Los Guayos Digital!</h1>
+            <p class="slogan-hero">Tu plataforma hiperlocal de movilidad y delivery en Carabobo</p>
+            
+            <div class="hero-cta">
+                <!-- Botón principal: Contacta agente -->
+                <button onclick="contactAgent()" class="btn-primary">
+                    👋 Hola, contacta con el agente
+                </button>
+                
+                <!-- Botón ubicación actual -->
+                <button onclick="shareLocation()" class="btn-wa">
+                    📍 Mi ubicación actual
+                    <span style="font-size: 1.3rem;">📍</span>
+                </button>
+                
+                <p style="margin-top: 16px; font-size: 0.95rem; opacity: 0.9;">
+                    3 clics y ya estás conectado • 24/7
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        
+        <div class="services-grid">
+            
+            <!-- Delivery -->
+            <div class="service-card">
+                <div class="icon">🚀</div>
+                <div class="content">
+                    <h3>Delivery</h3>
+                    <p>Como Yummy o Glovo pero hiperlocal. Comida, supermercado, farmacia o lo que necesites en minutos. Rápido, seguro y al mejor precio de Los Guayos.</p>
+                    <button onclick="openServiceWA('delivery')" 
+                            style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/iconodewhatsapp.png?raw=true" 
+                             alt="WhatsApp" style="height: 24px; width: 24px;">
+                        Pedir Delivery ahora
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Encomienda -->
+            <div class="service-card">
+                <div class="icon">📦</div>
+                <div class="content">
+                    <h3>Encomienda</h3>
+                    <p>Envía documentos, paquetes, regalos o cualquier cosa en la ciudad de forma segura y económica. Recogida y entrega en minutos. Confiable como Ridery.</p>
+                    <button onclick="openServiceWA('encomienda')" 
+                            style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/iconodewhatsapp.png?raw=true" 
+                             alt="WhatsApp" style="height: 24px; width: 24px;">
+                        Enviar Encomienda
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Moto Taxi -->
+            <div class="service-card">
+                <div class="icon">🏍️</div>
+                <div class="content">
+                    <h3>Moto Taxi</h3>
+                    <p>Traslados rápidos en moto por Los Guayos y Carabobo. Evita el tráfico, llega seguro y económico. Ideal para ir al trabajo, aeropuerto o cualquier destino.</p>
+                    <button onclick="openServiceWA('mototaxi')" 
+                            style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/iconodewhatsapp.png?raw=true" 
+                             alt="WhatsApp" style="height: 24px; width: 24px;">
+                        Pedir Moto Taxi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS DE SERVICIOS (para menú inferior) -->
+    <section id="categorias" style="background: white; padding-top: 0;">
+        <h2 class="section-title">Categorías de Servicios</h2>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <div onclick="navigateToCategory('taxi')" 
+                 style="background: #FF6B00; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                🏍️ Taxi
+            </div>
+            <div onclick="navigateToCategory('delivery-personal')" 
+                 style="background: #00B140; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                📦 Delivery Personal
+            </div>
+            <div onclick="navigateToCategory('delivery-corporativo')" 
+                 style="background: #007BFF; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                🏢 Delivery Corporativo
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 16px; color: #666; font-size: 0.9rem;">
+            Elige tu servicio y en menos de 3 clics estás en movimiento
+        </p>
+    </section>
+
+    <!-- ALIADOS COMERCIALES -->
+    <section id="aliados" style="background: #F8F9FA;">
+        <h2 class="section-title">Aliados Comerciales</h2>
+        
+        <div class="allies-grid">
+            
+            <!-- Genio Vision -->
+            <div class="ally-card">
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/logo%20Genio%20Vision.jpg?raw=true" 
+                     alt="Genio Vision">
+                <h4>Genio Vision</h4>
+                <p>Soluciones tecnológicas y de visión estratégica para tu negocio y hogar. Innovación al servicio de Los Guayos.</p>
+                <button onclick="openAllyWA('genio', '0424-4517644')" 
+                        style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700;">
+                    Contactar por WhatsApp
+                </button>
+            </div>
+            
+            <!-- RCV Serca -->
+            <div class="ally-card">
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/serca.jpg?raw=true" 
+                     alt="RCV Serca">
+                <h4>RCV Serca</h4>
+                <p>Seguros de responsabilidad civil vehicular (RCV). Protege tu moto o auto con la mejor cobertura y precios del mercado.</p>
+                <button onclick="openAllyWA('rcv', '0412-5396083')" 
+                        style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700;">
+                    Cotizar seguro
+                </button>
+            </div>
+            
+            <!-- Odalys -->
+            <div class="ally-card">
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/5fa921f8-dccb-48ce-a6fe-f42871293fc8.jpg?raw=true" 
+                     alt="Odalys">
+                <h4>Odalys</h4>
+                <p>Tienda online de ropa y accesorios de moda. Lo último en tendencias con envío rápido a través de Taxi Oliveros.</p>
+                <button onclick="openAllyWA('odalys', '0412-1381770')" 
+                        style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700;">
+                    Ver catálogo
+                </button>
+            </div>
+            
+            <!-- Pa chuparse los dedos -->
+            <div class="ally-card">
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/a709d8f6-09d1-4c02-9153-78de0ad55a18.jpg?raw=true" 
+                     alt="Pa chuparse los dedos">
+                <h4>Pa' Chuparse los Dedos</h4>
+                <p>Comidas rápidas: patacones, empanadas, operados y más. Sabor venezolano con entrega en minutos.</p>
+                <button onclick="openAllyWA('pachuparse', '0422-0121838')" 
+                        style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700;">
+                    Pedir ahora
+                </button>
+            </div>
+            
+            <!-- Dulzura Helada -->
+            <div class="ally-card">
+                <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/f2cd3cc6-1e52-431f-a4e8-e00f1385a438.jpg?raw=true" 
+                     alt="Dulzura Helada">
+                <h4>Dulzura Helada</h4>
+                <p>Helados y dulces artesanales de la mejor calidad. Frescura y sabor garantizados con el mejor servicio.</p>
+                <button onclick="openAllyWA('dulzura', '0412-1381770')" 
+                        style="background: var(--wa-green); color: white; width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 700;">
+                    Comprar dulces
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRABAJA CON NOSOTROS -->
+    <section id="trabaja" class="talent-section">
+        <h2 class="section-title">🚀 Trabaja con Nosotros</h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 32px; font-size: 1.1rem;">
+            Sé conductor de <strong>Taxi Oliveros</strong> y gana dinero flexiblemente en Los Guayos y Carabobo
+        </p>
+        
+        <!-- Razones para ser conductor -->
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h4>Flexibilidad total</h4>
+                <p>Conduce cuando quieras y a donde quieras. ¡Tú decides tu ritmo!</p>
+            </div>
+            <div class="benefit-card">
+                <h4>Ganancias atractivas</h4>
+                <p>Puedes ganar más durante las horas pico y recibir propinas por tu excelente servicio.</p>
+            </div>
+            <div class="benefit-card">
+                <h4>Pagos semanales</h4>
+                <p>Recibe tus ganancias tres veces por semana a la cuenta bancaria de tu preferencia. ¡Rápido y sin complicaciones!</p>
+            </div>
+            <div class="benefit-card">
+                <h4>Seguridad garantizada</h4>
+                <p>Podrás conocer el destino antes de aceptar viajes y disfrutar de una experiencia tranquila gracias a orientación especializada.</p>
+            </div>
+        </div>
+        
+        <!-- Requisitos -->
+        <div class="requirements">
+            <h3 style="margin-bottom: 16px; text-align: center;">Conoce nuestros requisitos</h3>
+            <ul>
+                <li>✅ Vehículo en buen estado</li>
+                <li>✅ Cédula de identidad</li>
+                <li>✅ Licencia de conducir</li>
+                <li>✅ RCV</li>
+                <li>✅ Carnet de circulación</li>
+                <li>✅ Teléfono inteligente</li>
+                <li>✅ Certificado médico</li>
+                <li>✅ Pasión por Carabobo y vocación de servicio</li>
+            </ul>
+        </div>
+        
+        <!-- Formulario optimizado -->
+        <h3 style="text-align: center; margin-bottom: 20px;">Solicita unirte en 30 segundos</h3>
+        <form id="talent-form" onsubmit="handleTalentForm(event)">
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" id="nombre" required placeholder="Tu nombre">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" id="telefono" required placeholder="0414-XXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de vehículo</label>
+                    <select id="vehiculo" required>
+                        <option value="">Selecciona...</option>
+                        <option value="Moto">Moto</option>
+                        <option value="Auto">Auto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>¿Tienes experiencia como conductor?</label>
+                <textarea id="experiencia" rows="2" placeholder="Ej: 2 años en delivery..."></textarea>
+            </div>
+            
+            <button type="submit" 
+                    style="background: var(--primary); color: white; width: 100%; padding: 18px; border-radius: 50px; border: none; font-size: 1.15rem; font-weight: 700; margin-top: 12px;">
+                🚀 Enviar mi solicitud por WhatsApp
+            </button>
+        </form>
+        
+        <!-- Texto adicional de delivery -->
+        <div style="margin-top: 40px; background: white; padding: 24px; border-radius: 20px;">
+            <h4 style="margin-bottom: 12px;">Servicios Delivery que podrás ofrecer</h4>
+            <ul style="font-size: 1rem; line-height: 1.6;">
+                <li>🔥 Los mejores restaurantes de tu ciudad</li>
+                <li>⚡ Entrega rápida ¡como un rayo!</li>
+                <li>🛒 La compra del súper, farmacias, floristerías y mucho más</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- AGRADECIMIENTOS NEXUS MARKETING -->
+    <section style="text-align: center; padding: 30px 16px; background: white;">
+        <p style="font-size: 1rem; color: #888; margin-bottom: 12px;">Gracias a</p>
+        <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/logo%20nexus.jpg?raw=true" 
+             alt="Nexus Marketing" 
+             style="height: 52px; width: auto; margin-bottom: 8px;">
+        <p style="font-size: 0.9rem; color: #666;">Nexus Marketing • Impulsando tu negocio digital</p>
+    </section>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <div class="fab-wa" onclick="contactAgent()">
+        <img src="https://github.com/jhonmalorne/DevieryTaxiOlivery/blob/main/iconodewhatsapp.png?raw=true" 
+             alt="WhatsApp" style="height: 36px; width: 36px;">
+    </div>
+
+    <!-- MENÚ INFERIOR TIPO APP -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="navigateTo('inicio')">
+            <span>🏠</span>
+            Inicio
+        </div>
+        <div class="nav-item" onclick="navigateTo('servicios')">
+            <span>🏍️</span>
+            Taxi
+        </div>
+        <div class="nav-item" onclick="navigateToCategory('delivery-personal')">
+            <span>📦</span>
+            Delivery
+        </div>
+        <div class="nav-item" onclick="navigateToCategory('delivery-corporativo')">
+            <span>🏢</span>
+            Corporativo
+        </div>
+        <div class="nav-item" onclick="navigateTo('trabaja')">
+            <span>🚀</span>
+            Trabaja
+        </div>
+    </nav>
+
+    <script>
+        /**
+         * Módulo Web Completo - Los Guayos Digital • Taxi Oliveros
+         * Desarrollado como un solo archivo HTML5 + CSS3 + JS moderno
+         * Mobile-First, alto rendimiento y flujo de conversión en < 3 clics
+         * Autor: Desarrollador Full-Stack Senior Especializado en Delivery & Movilidad
+         */
+
+        // Función principal para abrir WhatsApp
+        function openWA(phone, message) {
+            const cleanPhone = phone.replace(/\D/g, ''); // solo números
+            const encodedMsg = encodeURIComponent(message);
+            const url = `https://wa.me/${cleanPhone}?text=${encodedMsg}`;
+            window.open(url, '_blank');
+        }
+
+        // Contactar agente directo
+        function contactAgent() {
+            const msg = "👋 Hola! Soy usuario de Los Guayos Digital. Quiero contactar con un agente de Taxi Oliveros. ¿Me puedes ayudar?";
+            openWA('584149426895', msg);
+        }
+
+        // Compartir ubicación actual
+        function shareLocation() {
+            if (!navigator.geolocation) {
+                alert("Tu navegador no soporta geolocalización. Por favor actualiza o usa otro dispositivo.");
+                return;
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
+                    const googleMapsLink = `https://www.google.com/maps?q=${lat},${lng}`;
+                    
+                    const msg = `📍 ¡Hola Taxi Oliveros! Mi ubicación actual es:\n${googleMapsLink}\n\nEstoy en Los Guayos y quiero solicitar un servicio urgente (Delivery / Moto Taxi / Encomienda). ¡Gracias!`;
+                    
+                    openWA('584149426895', msg);
+                },
+                (error) => {
+                    let errorMsg = "No se pudo obtener tu ubicación.";
+                    if (error.code === 1) errorMsg = "Permiso de ubicación denegado. Actívalo en ajustes.";
+                    else if (error.code === 2) errorMsg = "Ubicación no disponible en este momento.";
+                    alert(errorMsg + "\n\nPuedes escribirnos directamente por WhatsApp.");
+                    contactAgent(); // fallback
+                },
+                { enableHighAccuracy: true, timeout: 8000 }
+            );
+        }
+
+        // Abrir WhatsApp para servicios específicos
+        function openServiceWA(service) {
+            let msg = "";
+            
+            if (service === 'delivery') {
+                msg = "🚀 Hola Taxi Oliveros! Quiero un Delivery. ¿Qué necesitas entregar? Estoy listo para pedir ya.";
+            } else if (service === 'encomienda') {
+                msg = "📦 Hola Taxi Oliveros! Necesito enviar una Encomienda. Por favor ayúdame con la recogida y entrega.";
+            } else if (service === 'mototaxi') {
+                msg = "🏍️ Hola Taxi Oliveros! Quiero un Moto Taxi ahora. Dime cómo proceder para mi traslado seguro y rápido.";
+            }
+            
+            openWA('584149426895', msg);
+        }
+
+        // Abrir WhatsApp para aliados
+        function openAllyWA(ally, phone) {
+            let msg = `Hola! Contacto desde Los Guayos Digital - Taxi Oliveros.\n\n`;
+            
+            if (ally === 'genio') msg += "Estoy interesado en los servicios de Genio Vision.";
+            else if (ally === 'rcv') msg += "Quiero cotizar un seguro RCV para mi vehículo.";
+            else if (ally === 'odalys') msg += "Quiero ver el catálogo de ropa y accesorios de Odalys.";
+            else if (ally === 'pachuparse') msg += "Quiero pedir comida de Pa' Chuparse los Dedos.";
+            else if (ally === 'dulzura') msg += "Quiero comprar helados y dulces de Dulzura Helada.";
+            
+            msg += "\n\nGracias por tu atención!";
+            
+            // Convertir teléfono a formato internacional
+            const fullPhone = '58' + phone.replace(/\D/g, '');
+            openWA(fullPhone, msg);
+        }
+
+        // Manejar formulario de talento
+        function handleTalentForm(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const vehiculo = document.getElementById('vehiculo').value;
+            const experiencia = document.getElementById('experiencia').value.trim() || 'Sin experiencia previa';
+            
+            const msg = `🚀 ¡Hola Taxi Oliveros!\n\nQuiero trabajar como conductor.\n\nNombre: ${nombre}\nTeléfono: ${telefono}\nVehículo: ${vehiculo}\nExperiencia: ${experiencia}\n\nEstoy listo para empezar ya. ¡Gracias!`;
+            
+            openWA('584149426895', msg);
+            
+            // Feedback visual
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.style.background = '#00B140';
+            btn.textContent = '✅ ¡Solicitud enviada!';
+            
+            setTimeout(() => {
+                btn.style.background = '';
+                btn.textContent = originalText;
+                e.target.reset();
+            }, 2800);
+        }
+
+        // Navegación del menú inferior
+        function navigateTo(section) {
+            // Remover active de todos
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            
+            // Activar el clicado (se hace manualmente en onclick)
+            
+            if (section === 'inicio') {
+                document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+            } else if (section === 'servicios') {
+                document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
+            } else if (section === 'trabaja') {
+                document.getElementById('trabaja').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Navegación de categorías
+        function navigateToCategory(category) {
+            // Scroll siempre a servicios pero con mensaje contextual
+            document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
+            
+            // Pequeña animación de feedback
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.service-card');
+                cards.forEach((card, i) => {
+                    if (category === 'taxi' && i === 2) {
+                        card.style.animation = 'pulse 800ms';
+                    }
+                    if ((category === 'delivery-personal' || category === 'delivery-corporativo') && i === 0) {
+                        card.style.animation = 'pulse 800ms';
+                    }
+                });
+            }, 600);
+            
+            console.log('%c✅ Categoría seleccionada: ' + category, 'color:#FF6B00; font-weight:700');
+        }
+
+        // Inicialización del script al cargar
+        window.onload = function () {
+            console.log('%c🚀 Módulo Los Guayos Digital - Taxi Oliveros cargado correctamente', 'background:#FF6B00;color:white;padding:4px 8px;border-radius:4px');
+            
+            // Activar primer ítem del menú inferior
+            const navItems = document.querySelectorAll('.nav-item');
+            if (navItems.length > 0) navItems[0].classList.add('active');
+            
+            // Soporte PWA básico (opcional pero recomendado para app-like)
+            if ('serviceWorker' in navigator) {
+                // Podría registrarse si se despliega como PWA, pero aquí solo log
+                console.log('✅ Listo para experiencia app-like en móvil');
+            }
+            
+            console.log('✅ Flujo de conversión a WhatsApp optimizado en menos de 3 clics');
+        };
+    </script>
+</body>
+</html>
